@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    int majorityElement(vector<int>& arr) {
+        
+        unordered_map<int,int>mpp;
+        for(auto p:arr){
+            mpp[p]++;
+        }
+        int ans = -1;
+        int freq = 0;
+        if(arr.size() == 1)return arr[0];
+        if(mpp.size() == arr.size())return -1;
+        for(auto m : mpp){
+            if(m.second > freq){
+                ans = m.first;
+                freq = m.second;
+            }
+        }
+        if(freq > arr.size()/2)
+        return ans;
+        
+        return -1;
+    }
+};
